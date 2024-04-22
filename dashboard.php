@@ -9,6 +9,14 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        /* Style for logout button */
+        .logout-btn {
+            position: absolute;
+            top: 60px;
+            right: 25px;
+        }
+    </style>
 </head>
 <body>
     <div class="container mb-8">
@@ -20,7 +28,7 @@
                     <p>Welcome <?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?>,</p>
                     <p><img style="width:10%" src="<?php echo (isset($_SESSION["avatar"]))? $_SESSION["avatar"] : "#"; ?>" alt="User Avatar"></p>
                     <span>This is the dashboard of simple login and registartion system.</span>
-                    <span>Click here to <a href="functions/logout.php">Logout</a>.</span>
+                    <a href="functions/logout.php" class="btn btn-danger logout-btn">Logout</a>
                 </div>
             </div>
         </div>

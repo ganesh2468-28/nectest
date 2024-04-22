@@ -4,8 +4,8 @@ require_once 'config.php'; // Database configuration file
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
     // Check if user exists in database
     $sql = "SELECT * FROM users WHERE username = :username";
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     if(!empty($user) && password_verify($_POST["password"], $user["password"])==true)
     {
         //get avatar base url
-        echo $base_url = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/ncetest/';
+        echo $base_url = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/nectest/';
         
         //set session data
         $_SESSION["userid"] =$user["id"];

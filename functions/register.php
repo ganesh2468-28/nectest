@@ -4,9 +4,9 @@ require_once 'config.php'; // Database configuration file
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    $firstname = $_POST["firstname"];
-    $lastname = $_POST["lastname"];
-    $username = $_POST["username"];
+    $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
+    $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $avatar = $_FILES["avatar"]["name"];
 
